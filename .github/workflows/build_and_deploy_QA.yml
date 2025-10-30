@@ -18,7 +18,7 @@ jobs:
         with:
           repository: Sugun-ravipalli/snowparkdev
           #path:dev
-          ref: dev
+          ref: QA
 
       - name: Set up Python 3.10
         uses: actions/setup-python@v4
