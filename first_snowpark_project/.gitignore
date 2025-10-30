@@ -1,0 +1,7 @@
+.packages/
+.venv/
+app.zip
+__pycache__
+# .gitignore
+config.toml
+*.p8
