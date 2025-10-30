@@ -38,6 +38,7 @@ jobs:
           SNOWFLAKE_SCHEMA:    ${{ secrets.SNOWFLAKE_SCHEMA_DEV }}
         run: |
           mkdir -p ~/.snowflake
+          umask 077                                   # ensure new files are 600 by default
           cat > ~/.snowflake/config.toml <<EOF
           [connections.ci]
           account = "${SNOWFLAKE_ACCOUNT}"
@@ -47,11 +48,12 @@ jobs:
           database = "${SNOWFLAKE_DATABASE}"
           schema = "${SNOWFLAKE_SCHEMA}"
           private_key_path = "/home/runner/.ssh/sf_key_dev.p8"
-          # private_key_passphrase = "${SNOWFLAKE_PRIVATE_KEY_PASSPHRASE}"  # only if you use one
 
           [options]
           default_connection = "ci"
           EOF
+              # belt and suspenders
+              chmod 600 ~/.snowflake/config.toml
 
       - name: Deploy Snowpark app
         working-directory: first_snowpark_project
