@@ -80,6 +80,7 @@ jobs:
             --warehouse "$SNOWFLAKE_WAREHOUSE" \
             --database  "$SNOWFLAKE_DATABASE" \
             --schema    "$SNOWFLAKE_SCHEMA" \
+            --authenticator SNOWFLAKE_JWT \
             --private-key-path ~/.ssh/sf_key_dev.p8
 
           snow snowpark deploy --replace --temporary-connection \
@@ -89,5 +90,6 @@ jobs:
             --warehouse "$SNOWFLAKE_WAREHOUSE" \
             --database  "$SNOWFLAKE_DATABASE" \
             --schema    "$SNOWFLAKE_SCHEMA" \
+            --authenticator SNOWFLAKE_JWT \
             --private-key-path ~/.ssh/sf_key_dev.p8
 
