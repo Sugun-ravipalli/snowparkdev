@@ -4,6 +4,10 @@ snowpark:
   stage_name: "dev_deployment"
   src: "app/"
 
+  # Add default packages for all objects (if your template supports it)
+  packages:
+    - snowflake-snowpark-python
+
   functions:
     - name: hello_function
       handler: "functions.hello_function"
@@ -24,6 +28,12 @@ snowpark:
 
     - name: test_procedure
       handler: "procedures.test_procedure"
+      signature: []             # no args -> [] (not "")
+      returns: string
+      runtime: "3.10"           # <-- scalar
+
+    - name: test_procedure_two
+      handler: "procedures.test_procedure_two"
       signature: []             # no args -> [] (not "")
       returns: string
       runtime: "3.10"           # <-- scalar
