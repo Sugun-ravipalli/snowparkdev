@@ -1,0 +1,16 @@
+# --- Secrets / credentials ---
+*.p8
+*.pem
+*.key
+rsa_key.p8
+config/connection_details.json
+**/connection_details.json
+
+# Snowflake local CLI config
+.snowflake/
+
+# Python
+__pycache__/
+*.pyc
+.env
+.venv
